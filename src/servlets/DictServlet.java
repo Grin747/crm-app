@@ -21,12 +21,39 @@ public class DictServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        /*String[] tables = new String[] {"owner"};
+
+        for (String t: tables) {
+            ArrayList<Attribute> items = AttribCrud.select(t);
+        }*/
+
+        ArrayList<Attribute> owners = AttribCrud.select("owner");
+        request.setAttribute("owners", owners);
+
+        ArrayList<Attribute> streets = AttribCrud.select("street");
+        request.setAttribute("streets", streets);
+
+        ArrayList<Attribute> res_complexes = AttribCrud.select("res_complex");
+        request.setAttribute("res_complexes", res_complexes);
+
         ArrayList<Attribute> districts = AttribCrud.select("district");
         request.setAttribute("districts", districts);
 
-        ArrayList<Attribute> objTypes = AttribCrud.select("objType");
-        request.setAttribute("objTypes", objTypes);
+        ArrayList<Attribute> cities = AttribCrud.select("city");
+        request.setAttribute("cities", cities);
 
-        getServletContext().getRequestDispatcher("/dict.jsp").forward(request, response);
+        ArrayList<Attribute> own_types = AttribCrud.select("own_type");
+        request.setAttribute("own_types", own_types);
+
+        ArrayList<Attribute> docs_types = AttribCrud.select("docs_type");
+        request.setAttribute("docs_types", docs_types);
+
+        ArrayList<Attribute> obj_types = AttribCrud.select("obj_type");
+        request.setAttribute("obj_types", obj_types);
+
+        ArrayList<Attribute> square_units = AttribCrud.select("square_unit");
+        request.setAttribute("square_units", square_units);
+
+        getServletContext().getRequestDispatcher("/admin/dict.jsp").forward(request, response);
     }
 }

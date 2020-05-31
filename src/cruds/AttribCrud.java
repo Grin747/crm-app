@@ -10,8 +10,7 @@ public class AttribCrud extends Crud {
     public static ArrayList<Attribute> select(String table) {
 
         ArrayList<Attribute> attributes = new ArrayList<>();
-        try {
-            Statement statement = conn.createStatement();
+        try(Statement statement = conn.createStatement()) {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM " + table);
 
             while (resultSet.next()) {
