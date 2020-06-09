@@ -12,7 +12,11 @@
 </head>
 <body class="text-left">
 <div class="container">
-    <form method="post" action='<c:url value="/add-realtor" />'>
+    <nav class="navbar fixed-top">
+        <a href="admin" class="btn btn-outline-success btn-sm">Back</a>
+    </nav>
+    <h1>New Realtor</h1>
+    <form method="post" action='<c:url value="/add-realtor"/>'>
         <div class="row mb-3">
             <div class="col">
                 <label for="name">Name</label>

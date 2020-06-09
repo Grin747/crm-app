@@ -11,23 +11,26 @@
     <title>Realties list</title>
 </head>
 <body>
-<table class="table table-striped">
-    <thead class="thead-dark">
-    <tr>
-        <th scope="col">Цена</th>
-        <th scope="col">Площадь</th>
-        <th scope="col">Комнаты</th>
-        <th scope="col">Цена</th>
-        <th scope="col">Цена</th>
-    </tr>
-    </thead>
-    <tbody>
-    <c:forEach var="item" items="realties">
-        <tr>
-
-        </tr>
-    </c:forEach>
-    </tbody>
-</table>
+<div class="container text-left">
+    <nav class="navbar fixed-top">
+        <a href="signin" class="btn btn-outline-success btn-sm">Sign in</a>
+    </nav>
+    <div class="card-deck">
+        <%--@elvariable id="cards" type="java.util.List"--%>
+        <c:forEach items="${cards}" var="card">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">${card.title}</h5>
+                    <p class="card-subtitle text-muted">${card.address}</p>
+                    <p class="card-text">${card.price}</p>
+                    <form method="get" action='<c:url value="/details"/>'>
+                        <input type="hidden" name="id" value="${card.id}">
+                        <button type="submit" class="btn btn-outline-primary btn-sm">Details</button>
+                    </form>
+                </div>
+            </div>
+        </c:forEach>
+    </div>
+</div>
 </body>
 </html>

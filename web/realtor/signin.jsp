@@ -11,14 +11,12 @@
     <title>Sign in</title>
 </head>
 <body class="text-center">
-<form class="form-signin">
+<form class="form-signin" method="post" action='<c:url value="/signin" />'>
     <img class="mb-4" src="../assets/logo.png" alt width="256" height="256">
-    <label class="sr-only">Email
-        <input name="login" type="email" class="form-control" placeholder="Login" required>
-    </label>
-    <label class="sr-only">Password
-        <input name="password" type="password" class="form-control" placeholder="Password" required>
-    </label>
+    <label for="login" class="sr-only">Email</label>
+    <input name="login" id="login" type="text" class="form-control" placeholder="Login" required>
+    <label for="password" class="sr-only">Password</label>
+    <input name="password" id="password" type="password" class="form-control" placeholder="Password" required>
     <button class="btn btn-success" type="submit">Sign in</button>
     <p class="mt-5 mb-4 text-muted"></p>
 </form>

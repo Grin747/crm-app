@@ -56,7 +56,23 @@ public class RealtorCrud extends Crud {
         return realtors;
     }
 
-    public void updateSalary(int id, int salary){
+    public static Integer auth(String phone, String pass){
+        String sql = "select auth(?, ?) as realtor";
+        Integer id = null;
+        try(PreparedStatement statement = conn.prepareStatement(sql)) {
+            statement.setString(1, phone);
+            statement.setString(2, pass);
+
+            ResultSet rs = statement.executeQuery();
+            rs.next();
+            id = rs.getInt("realtor");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return id;
+    }
+
+    public static void updateSalary(int id, int salary){
         String sql = "call update_salary(?, ?)";
         try(PreparedStatement statement = conn.prepareStatement(sql)) {
             statement.setInt(2, salary);
@@ -67,7 +83,7 @@ public class RealtorCrud extends Crud {
         }
     }
 
-    public void changePassword(int id, String password){
+    public static void changePassword(int id, String password){
         String sql = "call change_password(?, ?)";
         try(PreparedStatement statement = conn.prepareStatement(sql)) {
             statement.setString(2, password);

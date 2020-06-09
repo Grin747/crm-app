@@ -13,7 +13,8 @@ import java.util.Date;
 
 @WebServlet("/add-realtor")
 public class CreateRealtorServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         Realtor realtor = new Realtor();
 
         realtor.setName(request.getParameter("name"));
@@ -26,10 +27,11 @@ public class CreateRealtorServlet extends HttpServlet {
         realtor.setHire_date(new Date());
 
         RealtorCrud.add(realtor);
-        response.sendRedirect(request.getContextPath() + "/dict");
+        response.sendRedirect(request.getContextPath() + "/admin");
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/add-realtor.jsp").forward(request, response);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        getServletContext().getRequestDispatcher("/admin/add-realtor.jsp").forward(request, response);
     }
 }

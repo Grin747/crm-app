@@ -14,14 +14,12 @@
 <div class="container">
     <form method="post" action='<c:url value="/master-detail" />'>
         <div class="input-group">
-            <label>Realtors
-                <select class="custom-select" name="realtor">
-                    <%--@elvariable id="realtors" type="java.util.List"--%>
-                    <c:forEach var="item" items="${realtors}">
-                        <option value="${item.id}">${item.name}</option>
-                    </c:forEach>
-                </select>
-            </label>
+            <select class="custom-select" name="realtor">
+                <%--@elvariable id="realtors" type="java.util.List"--%>
+                <c:forEach var="item" items="${realtors}">
+                    <option value="${item.id}">${item.name}</option>
+                </c:forEach>
+            </select>
             <div class="input-group-append">
                 <button class="btn btn-outline-secondary" type="submit">View</button>
             </div>

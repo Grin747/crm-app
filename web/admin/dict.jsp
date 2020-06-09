@@ -11,8 +11,11 @@
     <title>Dictionary</title>
 </head>
 <body>
-<div class="container">
-    <div class="card-columns mt-4 text-left">
+<nav class="navbar fixed-top">
+    <a href="admin" class="btn btn-outline-success btn-sm">Back</a>
+</nav>
+<main class="container" role="main">
+    <div class="card-deck mt-4">
         <div class="card mb-4 shadow-sm">
             <%--@elvariable id="owners" type="java.util.List"--%>
             <div class="card-header"><h3>Owners:</h3></div>
@@ -266,6 +269,6 @@
             </ul>
         </div>
     </div>
-</div>
+</main>
 </body>
 </html>

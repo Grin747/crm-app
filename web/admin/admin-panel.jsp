@@ -12,10 +12,12 @@
 </head>
 <body class="text-center">
 <div class="container">
+    <h1 class="text-muted mb-3">Boss's place</h1>
     <a href="add-realtor" class="btn btn-primary btn-lg m-2">Add realtor</a>
     <a href="dict" class="btn btn-primary btn-lg m-2">Dictionary</a>
     <a href="" class="btn btn-primary btn-lg m-2">Sells report</a>
     <a href="" class="btn btn-primary btn-lg m-2">Salaries</a>
+    <a href="master-detail" class="btn btn-primary btn-lg m-2">Realtors</a>
 </div>
 </body>
 </html>

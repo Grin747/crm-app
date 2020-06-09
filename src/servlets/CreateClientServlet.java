@@ -1,8 +1,7 @@
 package servlets;
 
-import cruds.RealtyCrud;
-import entities.Card;
-import entities.Realty;
+import cruds.ClientCrud;
+import entities.Client;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,18 +9,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 
-@WebServlet("/list")
-public class ListServlet extends HttpServlet {
+@WebServlet("/add-client")
+public class CreateClientServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        Client client = new Client(
+                request.getParameter("phone"),
+                request.getParameter("name"),
+                request.getParameter("surname"),
+                request.getParameter("patronymic"),
+                request.getParameter("passport_number")
+        );
 
+        ClientCrud.add(client);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute("cards", RealtyCrud.getCards());
-        request.getRequestDispatcher("/list.jsp").forward(request, response);
+        request.getRequestDispatcher("/realtor/add-client.jsp");
     }
 }

@@ -12,21 +12,50 @@ public class Realty implements Serializable {
     private double commission;
     private int realtor;
     private Date delivery_date;
-    private int street;
-    private int res_complex;
-    private int district;
+    private Integer street;
+    private Integer res_complex;
+    private Integer district;
     private int city;
     private String building;
     private float square;
     private int square_unit;
-    private int room_count;
-    private int floor;
-    private String cad_number;
-    private int owner;
-    private int own_type;
-    private int docs_type;
-    private int obj_type;
+    private Integer room_count;
+    private Integer floor;
+    private Integer owner;
+    private Integer docs_type;
+    private Integer obj_type;
     private String comment;
+
+    public Realty(int realtor) {
+        this.realtor = realtor;
+    }
+
+    public Realty(int realty_id, double in_price, double mort_price, double cash_price,
+                  double commission, int realtor, Date delivery_date, Integer street,
+                  Integer res_complex, Integer district, int city, String building,
+                  float square, int square_unit, Integer room_count, Integer floor,
+                  Integer owner, Integer docs_type, Integer obj_type, String comment) {
+        this.realty_id = realty_id;
+        this.in_price = in_price;
+        this.mort_price = mort_price;
+        this.cash_price = cash_price;
+        this.commission = commission;
+        this.realtor = realtor;
+        this.delivery_date = delivery_date;
+        this.street = street;
+        this.res_complex = res_complex;
+        this.district = district;
+        this.city = city;
+        this.building = building;
+        this.square = square;
+        this.square_unit = square_unit;
+        this.room_count = room_count;
+        this.floor = floor;
+        this.owner = owner;
+        this.docs_type = docs_type;
+        this.obj_type = obj_type;
+        this.comment = comment;
+    }
 
     public int getRealty_id() {
         return realty_id;
@@ -84,27 +113,27 @@ public class Realty implements Serializable {
         this.delivery_date = delivery_date;
     }
 
-    public int getStreet() {
+    public Integer getStreet() {
         return street;
     }
 
-    public void setStreet(int street) {
+    public void setStreet(Integer street) {
         this.street = street;
     }
 
-    public int getRes_complex() {
+    public Integer getRes_complex() {
         return res_complex;
     }
 
-    public void setRes_complex(int res_complex) {
+    public void setRes_complex(Integer res_complex) {
         this.res_complex = res_complex;
     }
 
-    public int getDistrict() {
+    public Integer getDistrict() {
         return district;
     }
 
-    public void setDistrict(int district) {
+    public void setDistrict(Integer district) {
         this.district = district;
     }
 
@@ -140,59 +169,43 @@ public class Realty implements Serializable {
         this.square_unit = square_unit;
     }
 
-    public int getRoom_count() {
+    public Integer getRoom_count() {
         return room_count;
     }
 
-    public void setRoom_count(int room_count) {
+    public void setRoom_count(Integer room_count) {
         this.room_count = room_count;
     }
 
-    public int getFloor() {
+    public Integer getFloor() {
         return floor;
     }
 
-    public void setFloor(int floor) {
+    public void setFloor(Integer floor) {
         this.floor = floor;
     }
 
-    public String getCad_number() {
-        return cad_number;
-    }
-
-    public void setCad_number(String cad_number) {
-        this.cad_number = cad_number;
-    }
-
-    public int getOwner() {
+    public Integer getOwner() {
         return owner;
     }
 
-    public void setOwner(int owner) {
+    public void setOwner(Integer owner) {
         this.owner = owner;
     }
 
-    public int getOwn_type() {
-        return own_type;
-    }
-
-    public void setOwn_type(int own_type) {
-        this.own_type = own_type;
-    }
-
-    public int getDocs_type() {
+    public Integer getDocs_type() {
         return docs_type;
     }
 
-    public void setDocs_type(int docs_type) {
+    public void setDocs_type(Integer docs_type) {
         this.docs_type = docs_type;
     }
 
-    public int getObj_type() {
+    public Integer getObj_type() {
         return obj_type;
     }
 
-    public void setObj_type(int obj_type) {
+    public void setObj_type(Integer obj_type) {
         this.obj_type = obj_type;
     }
 
@@ -202,10 +215,5 @@ public class Realty implements Serializable {
 
     public void setComment(String comment) {
         this.comment = comment;
-    }
-
-    public Realty(int id, int realtor_id){
-        realty_id = id;
-        realtor = realtor_id;
     }
 }
