@@ -1,6 +1,5 @@
 package servlets;
 
-import add.Tools;
 import cruds.AttribCrud;
 import cruds.RealtyCrud;
 import entities.Realty;
@@ -26,23 +25,23 @@ public class CreateRealtyServlet extends HttpServlet {
             realty.setIn_price(Integer.parseInt(request.getParameter("in_price")));
             realty.setCash_price(Integer.parseInt(request.getParameter("cash_price")));
             realty.setMort_price(Integer.parseInt(request.getParameter("mort_price")));
-            realty.setCommission(Integer.parseInt(request.getParameter("commission")));
 
             realty.setCity(Integer.parseInt(request.getParameter("city")));
-            realty.setStreet(Tools.parse(request.getParameter("street")));
-            realty.setDistrict(Tools.parse(request.getParameter("district")));
-            realty.setRes_complex(Tools.parse(request.getParameter("res_complex")));
+            realty.setStreet(Integer.parseInt(request.getParameter("street")));
+            realty.setDistrict(Integer.parseInt(request.getParameter("district")));
+            realty.setRes_complex(Integer.parseInt(request.getParameter("res_complex")));
             realty.setBuilding(request.getParameter("building"));
 
             realty.setSquare(Float.parseFloat(request.getParameter("square")));
             realty.setSquare_unit(Integer.parseInt(request.getParameter("square_unit")));
-            realty.setRoom_count(Tools.parse(request.getParameter("room_count")));
-            realty.setFloor(Tools.parse(request.getParameter("floor")));
+            realty.setRoom_count(Integer.parseInt(request.getParameter("room_count")));
+            realty.setFloor(Integer.parseInt(request.getParameter("floor")));
 
-            realty.setObj_type(Tools.parse(request.getParameter("obj_type")));
-            realty.setDocs_type(Tools.parse(request.getParameter("docs_type")));
+            realty.setObj_type(Integer.parseInt(request.getParameter("obj_type")));
+            realty.setOwn_type(Integer.parseInt(request.getParameter("own_type")));
+            realty.setDocs_type(Integer.parseInt(request.getParameter("docs_type")));
 
-            realty.setOwner(Tools.parse(request.getParameter("owner")));
+            realty.setOwner(Integer.parseInt(request.getParameter("owner")));
 
             SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
             Date d;

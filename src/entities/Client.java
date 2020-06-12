@@ -19,6 +19,15 @@ public class Client implements Serializable {
         this.passport_number = passport_number;
     }
 
+    public Client(int client_id, String phone, String name, String surname, String patronymic, String passport_number) {
+        this.client_id = client_id;
+        this.phone = phone;
+        this.name = name;
+        this.surname = surname;
+        this.patronymic = patronymic;
+        this.passport_number = passport_number;
+    }
+
     public int getClient_id() {
         return client_id;
     }

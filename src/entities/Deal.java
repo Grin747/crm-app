@@ -7,10 +7,10 @@ public class Deal implements Serializable {
     private int client;
     private int realty;
     private int realtor;
-    private double profit;
+    private int profit;
     private Date deal_date;
 
-    public Deal(int client, int realty, int realtor, double profit, Date deal_date) {
+    public Deal(int client, int realty, int realtor, int profit, Date deal_date) {
         this.client = client;
         this.realty = realty;
         this.realtor = realtor;
@@ -42,11 +42,11 @@ public class Deal implements Serializable {
         this.realtor = realtor;
     }
 
-    public double getProfit() {
+    public int getProfit() {
         return profit;
     }
 
-    public void setProfit(double profit) {
+    public void setProfit(int profit) {
         this.profit = profit;
     }
 

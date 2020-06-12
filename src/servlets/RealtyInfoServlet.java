@@ -21,6 +21,6 @@ public class RealtyInfoServlet extends HttpServlet {
             throws ServletException, IOException {
         Integer id = Integer.decode(request.getParameter("id"));
         request.setAttribute("realty", RealtyCrud.get(id));
-
+        request.getRequestDispatcher("/realty-info.jsp").forward(request, response);
     }
 }

@@ -23,10 +23,11 @@ public class CreateClientServlet extends HttpServlet {
         );
 
         ClientCrud.add(client);
+        response.sendRedirect(request.getContextPath() + "/cabinet");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/realtor/add-client.jsp");
+        request.getRequestDispatcher("/realtor/add-client.jsp").forward(request, response);
     }
 }

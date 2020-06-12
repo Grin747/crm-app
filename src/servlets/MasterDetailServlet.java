@@ -1,5 +1,6 @@
 package servlets;
 
+import cruds.DealCrud;
 import cruds.RealtorCrud;
 
 import javax.servlet.ServletException;
@@ -13,9 +14,8 @@ import java.io.IOException;
 public class MasterDetailServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String a = request.getParameter("realtor");
-        System.out.println(a);
-        request.setAttribute("deals", a);
+        request.setAttribute("deals", DealCrud.getInfo(Integer.decode(request.getParameter("realtor"))));
+        request.setAttribute("realtors", RealtorCrud.select());
         getServletContext().getRequestDispatcher("/admin/realtors-list.jsp").forward(request, response);
     }
 

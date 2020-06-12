@@ -13,12 +13,12 @@
 <body>
 <div class="container text-left">
     <nav class="navbar fixed-top">
-        <a href="signin" class="btn btn-outline-success btn-sm">Sign in</a>
+        <a href="cabinet" class="btn btn-outline-success btn-sm">Sign in</a>
     </nav>
     <div class="card-deck">
         <%--@elvariable id="cards" type="java.util.List"--%>
         <c:forEach items="${cards}" var="card">
-            <div class="card">
+            <div class="card my-2">
                 <div class="card-body">
                     <h5 class="card-title">${card.title}</h5>
                     <p class="card-subtitle text-muted">${card.address}</p>

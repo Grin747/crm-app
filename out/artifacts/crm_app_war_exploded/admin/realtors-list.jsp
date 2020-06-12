@@ -12,12 +12,15 @@
 </head>
 <body>
 <div class="container">
+    <nav class="navbar fixed-top">
+        <a href="admin" class="btn btn-outline-success btn-sm">Back</a>
+    </nav>
     <form method="post" action='<c:url value="/master-detail" />'>
         <div class="input-group">
-            <select class="custom-select" name="realtor">
+            <select class="custom-select" name="realtor" aria-label="realtor">
                 <%--@elvariable id="realtors" type="java.util.List"--%>
                 <c:forEach var="item" items="${realtors}">
-                    <option value="${item.id}">${item.name}</option>
+                    <option value="${item.id}">${item.name} ${item.surname}</option>
                 </c:forEach>
             </select>
             <div class="input-group-append">
@@ -26,10 +29,15 @@
         </div>
     </form>
 
-    <table>
-        ${deals}
-    </table>
+    <ul class="list-group list-group-flush mt-4">
+        <%--@elvariable id="deals" type="java.util.HashMap"--%>
+        <c:forEach var="item" items="${deals}">
+            <li class="list-group-item">
+                <p>${item.value}</p>
+                <a href="details?id=${item.key}" class="btn btn-outline-secondary btn-sm">Realty</a>
+            </li>
+        </c:forEach>
+    </ul>
 </div>
-
 </body>
 </html>

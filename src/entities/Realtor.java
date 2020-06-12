@@ -14,6 +14,22 @@ public class Realtor implements Serializable {
     private Date hire_date;
     private int salary;
 
+    public Realtor(){
+
+    }
+
+    public Realtor(int id, String email, String phone, String password, String name, String surname, String patronymic, Date hire_date, int salary) {
+        this.id = id;
+        this.email = email;
+        this.phone = phone;
+        this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.patronymic = patronymic;
+        this.hire_date = hire_date;
+        this.salary = salary;
+    }
+
     public int getId() {
         return id;
     }
