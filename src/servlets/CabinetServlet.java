@@ -3,6 +3,7 @@ package servlets;
 import cruds.DealCrud;
 import cruds.RealtorCrud;
 import cruds.RealtyCrud;
+import entities.Card;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 @WebServlet("/cabinet")
 public class CabinetServlet extends HttpServlet {
@@ -28,7 +30,7 @@ public class CabinetServlet extends HttpServlet {
         }
         request.setAttribute("deals", DealCrud.getInfo(id));
         request.setAttribute("realtor", RealtorCrud.get(id));
-        request.setAttribute("realties", RealtyCrud.getByRealtor(id));
+        request.setAttribute("realties", RealtyCrud.getDetailedCards(id));
         request.getRequestDispatcher("/realtor/cabinet.jsp").forward(request, response);
     }
 }

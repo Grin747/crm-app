@@ -1,3 +1,4 @@
+<%@ page import="cruds.AttribCrud" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -23,7 +24,7 @@
                 <select class="custom-select" id="realty" name="realty">
                     <%--@elvariable id="realties" type="java.util.List"--%>
                     <c:forEach var="item" items="${realties}">
-                        <option value="${item.id}">${item.address} ${item.title} ${item.price}</option>
+                        <option value="${item.id}">${item.title} ${item.address} ${item.price}</option>
                     </c:forEach>
                 </select>
             </div>

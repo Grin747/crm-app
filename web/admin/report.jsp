@@ -11,6 +11,29 @@
     <title>Report</title>
 </head>
 <body>
-
+<div class="container">
+    <nav class="navbar fixed-top">
+        <a href="admin" class="btn btn-outline-success btn-sm">Back</a>
+    </nav>
+    <table class="table table-borderless table-hover">
+        <thead class="thead-light">
+        <tr>
+            <th>Complex</th>
+            <th>Sold</th>
+            <th>Active</th>
+        </tr>
+        </thead>
+        <tbody>
+        <%--@elvariable id="reps" type="java.util.List"--%>
+        <c:forEach items="${reps}" var="item">
+            <tr>
+                <th scope="row">${item.reg}</th>
+                <td>${item.sold}</td>
+                <td>${item.active}</td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

@@ -18,15 +18,12 @@
     <div class="card-deck">
         <%--@elvariable id="cards" type="java.util.List"--%>
         <c:forEach items="${cards}" var="card">
-            <div class="card my-2">
+            <div class="card m-3">
                 <div class="card-body">
                     <h5 class="card-title">${card.title}</h5>
                     <p class="card-subtitle text-muted">${card.address}</p>
                     <p class="card-text">${card.price}</p>
-                    <form method="get" action='<c:url value="/details"/>'>
-                        <input type="hidden" name="id" value="${card.id}">
-                        <button type="submit" class="btn btn-outline-primary btn-sm">Details</button>
-                    </form>
+                    <a href="details?id=${card.id}" class="btn btn-primary btn-sm">Details</a>
                 </div>
             </div>
         </c:forEach>

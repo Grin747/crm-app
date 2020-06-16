@@ -64,7 +64,7 @@ public class CreateRealtyServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Integer id = (Integer) request.getSession().getAttribute("id");
-        if(id == null) response.sendRedirect("/notfound.jsp");
+        if(id == null) response.sendRedirect("/signin");
         request.setAttribute("res_complexes", AttribCrud.select("res_complex"));
         request.setAttribute("cities", AttribCrud.select("city"));
         request.setAttribute("districts", AttribCrud.select("district"));

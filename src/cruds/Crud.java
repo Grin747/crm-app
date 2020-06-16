@@ -1,9 +1,9 @@
 package cruds;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import entities.RegReport;
+
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.Properties;
 
 public abstract class Crud {
@@ -44,5 +44,22 @@ public abstract class Crud {
             ex.printStackTrace();
         }
         return 0;
+    }
+
+    public static ArrayList<RegReport> report(){
+        ArrayList<RegReport> reports = new ArrayList<>();
+        try(Statement statement = conn.createStatement()) {
+            ResultSet rs = statement.executeQuery("select * from region_report()");
+            while (rs.next()){
+                reports.add(new RegReport(
+                        rs.getString("complex"),
+                        rs.getInt("active"),
+                        rs.getInt("sold")
+                ));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return reports;
     }
 }

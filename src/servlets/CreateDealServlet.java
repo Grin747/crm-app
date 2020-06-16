@@ -41,8 +41,14 @@ public class CreateDealServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        Integer id = (Integer) request.getSession().getAttribute("id");
+        if(id == null){
+            response.sendRedirect("/signin");
+            return;
+        }
+
         request.setAttribute("clients", ClientCrud.select());
-        request.setAttribute("realties", RealtyCrud.getCards());
+        request.setAttribute("realties", RealtyCrud.getByRealtor(id));
         request.getRequestDispatcher("/realtor/add-deal.jsp").forward(request, response);
     }
 }

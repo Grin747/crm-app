@@ -93,39 +93,51 @@ public class RealtyCrud extends Crud {
         return realty;
     }
 
-    public static ArrayList<Realty> getByRealtor(int realtor_id) {
-        String sql = "select * from realty where realtor = ?";
-        ArrayList<Realty> realties = new ArrayList<>();
+    public static ArrayList<Card> getByRealtor(int realtor_id) {
+        String sql = "select * from get_cards_by_realtor(?)";
+        ArrayList<Card> cards = new ArrayList<>();
         try (PreparedStatement statement = conn.prepareStatement(sql)) {
             statement.setInt(1, realtor_id);
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                realties.add(new Realty(
-                        resultSet.getInt("realty_id"),
-                        resultSet.getInt("in_price"),
-                        resultSet.getInt("mort_price"),
-                        resultSet.getInt("cash_price"),
-                        resultSet.getInt("realtor"),
-                        resultSet.getDate("delivery_date"),
-                        resultSet.getInt("street"),
-                        resultSet.getInt("res_complex"),
-                        resultSet.getInt("district"),
-                        resultSet.getInt("city"),
-                        resultSet.getString("building"),
-                        resultSet.getFloat("square"),
-                        resultSet.getInt("square_unit"),
-                        resultSet.getInt("room_count"),
-                        resultSet.getInt("floor"),
-                        resultSet.getInt("owner"),
-                        resultSet.getInt("docs_type"),
-                        resultSet.getInt("obj_type"),
-                        resultSet.getString("comment")
-                ));
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                cards.add(new Card(rs.getInt("id"), rs.getString("title"),
+                        rs.getString("address"), rs.getString("price")));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
 
-        return realties;
+        return cards;
+    }
+
+    public static ArrayList<Card> getDetailedCards(int realtor_id) {
+        ArrayList<Card> cards = new ArrayList<>();
+        String sql = "select * from get_detailed_cards(?)";
+        try (PreparedStatement statement = conn.prepareStatement(sql)) {
+            statement.setInt(1, realtor_id);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                String buf = rs.getString("address").equals("true") ? "sold" : "active";
+                cards.add(new Card(rs.getInt("id"), rs.getString("title"),
+                        buf, rs.getString("price")));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return cards;
+    }
+
+    public static void delete(int id){
+        try {
+
+            String sql = "DELETE FROM realty WHERE realty_id = ?";
+
+            try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+                preparedStatement.setInt(1, id);
+                preparedStatement.executeUpdate();
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 }

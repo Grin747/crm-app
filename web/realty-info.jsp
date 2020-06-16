@@ -1,5 +1,7 @@
 <%@ page import="cruds.AttribCrud" %>
-<%@ page import="entities.Realty" %><%--@elvariable id="realty" type="entities.Realty"--%>
+<%@ page import="entities.Realty" %>
+<%@ page import="cruds.RealtorCrud" %>
+<%@ page import="entities.Realtor" %><%--@elvariable id="realty" type="entities.Realty"--%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -17,16 +19,41 @@
     <a href="list" class="btn btn-outline-primary btn-sm">Back to list</a>
 </nav>
 <% Realty realty = (Realty) request.getAttribute("realty"); %>
+<% Realtor realtor = RealtorCrud.get(realty.getRealtor()); %>
 <div class="container text-left">
-    <h3><%= AttribCrud.selectOne(realty.getObj_type(), "obj_type").getName() %> ${realty.square}
+    <h3 class="mb-3"><%= AttribCrud.selectOne(realty.getObj_type(), "obj_type").getName() %> ${realty.square}
         <%= AttribCrud.selectOne(realty.getSquare_unit(), "square_unit").getName() %>
     </h3>
-    <p>Price for cash: $${realty.cash_price}</p>
-    <p>Price for mortgage: $${realty.mort_price}</p>
-    <p>Delivery date: ${realty.delivery_date}</p>
-    <p>Room count: ${realty.room_count}</p>
-    <p>Floor: ${realty.floor}</p>
-    <p>Description: ${realty.comment}</p>
+    <dl class="row">
+        <dt class="col-2">Address</dt>
+        <dd class="col-10">
+            <div><%= AttribCrud.selectOne(realty.getCity(), "city").getName() %> <%= AttribCrud.selectOne(realty.getDistrict(), "district").getName() %></div>
+            <div><%= AttribCrud.selectOne(realty.getStreet(), "street").getName() %> <%= AttribCrud.selectOne(realty.getRes_complex(), "res_complex").getName() %></div>
+            <div>${realty.floor} floor, building ${realty.building}</div>
+        </dd>
+
+        <dt class="col-2">Price for cash</dt>
+        <dd class="col-10">$${realty.cash_price}</dd>
+
+        <dt class="col-2">Price for mortgage</dt>
+        <dd class="col-10">$${realty.mort_price}</dd>
+
+        <dt class="col-2">Delivery date</dt>
+        <dd class="col-10">${realty.delivery_date}</dd>
+
+        <dt class="col-2">Room count</dt>
+        <dd class="col-10">${realty.room_count}</dd>
+
+        <dt class="col-2">Description</dt>
+        <dd class="col-10">${realty.comment}</dd>
+
+        <dt class="col-2">Contact us</dt>
+        <dd class="col-10">
+            <div><%= realtor.getEmail() %></div>
+            <div><%= realtor.getPhone() %></div>
+            <div><%= realtor.getSurname() %> <%= realtor.getName() %> <%= realtor.getPatronymic() %></div>
+        </dd>
+    </dl>
 </div>
 </body>
 </html>

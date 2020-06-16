@@ -9,19 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/salaries")
-public class SalaryServlet extends HttpServlet {
+@WebServlet("/change-password")
+public class ChangePasswordServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Integer sal = Integer.decode(request.getParameter("salary"));
-        Integer id = Integer.decode(request.getParameter("id"));
-        RealtorCrud.updateSalary(id, sal);
-        response.sendRedirect("/salaries");
+        RealtorCrud.changePassword((Integer) request.getSession().getAttribute("id"),
+                (String) request.getAttribute("pass"));
+        response.sendRedirect("/cabinet");
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute("realtors", RealtorCrud.select());
-        request.getRequestDispatcher("/admin/salaries.jsp").forward(request, response);
+
     }
 }

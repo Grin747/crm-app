@@ -20,12 +20,19 @@
 </nav>
 <div class="container">
     <h2>${realtor.surname} ${realtor.name} ${realtor.patronymic}</h2>
+    <form class="form-inline" method="post" action='<c:url value="change-password"/>'>
+        <label for="pass" class="sr-only">Change password</label>
+        <input type="password" class="form-control" id="pass" placeholder="Password">
+        <button class="btn btn-outline-success ml-2" type="submit">Change</button>
+    </form>
     <ul class="list-group list-group-flush mt-4">
         <%--@elvariable id="deals" type="java.util.HashMap"--%>
         <c:forEach var="item" items="${deals}">
             <li class="list-group-item">
-                <p>${item.value}</p>
-                <a href="details?id=${item.key}" class="btn btn-outline-secondary btn-sm">Realty</a>
+                <p>
+                    <a href="details?id=${item.key}" class="btn btn-outline-secondary btn-sm">Realty</a>
+                        ${item.value}
+                </p>
                 <form class="form-inline" method="post" action='<c:url value="deal-delete"/>'>
                     <input name="realty_id" type="hidden" value="${item.key}">
                     <button class="btn btn-outline-danger btn-sm" type="submit">Delete</button>
@@ -41,7 +48,17 @@
         <%--@elvariable id="realties" type="java.util.ArrayList"--%>
         <c:forEach var="item" items="${realties}">
             <li class="list-group-item">
-
+                <div class="mb-2">
+                        ${item.title},
+                    In price: ${item.price}
+                </div>
+                <div class="mb-2">Status: ${item.address}</div>
+                <a href="edit-realty?id=${item.id}" class="btn btn-outline-info btn-sm">Edit</a>
+                <a href="details?id=${item.id}" class="btn btn-outline-secondary btn-sm">Realty</a>
+                <form class="form-inline mt-2" method="post" action='<c:url value="delete-realty"/> '>
+                    <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
+                    <input type="hidden" name="id" value="${item.id}">
+                </form>
             </li>
         </c:forEach>
         <li class="list-group-item">
